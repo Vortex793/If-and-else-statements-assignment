@@ -7,9 +7,7 @@
             Console.WriteLine("Which part of the code would you like to run (choose between 1-5)");
             Console.WriteLine("1 - Space Boxing");
             Console.WriteLine("2 - Simple Calculator");
-            Console.WriteLine("3 - Age in 5 Years");
-            Console.WriteLine("4 - A Dumb Calculator");
-            Console.WriteLine("5 - The Cash Register");
+            Console.WriteLine("3 - Quiz");
             int choice = Convert.ToInt32(Console.ReadLine());
 
             if (choice == 1) Part1();
@@ -102,10 +100,11 @@
         static void Part3()
         {
             string choice;
-            int score = 0;
+            int albums, score = 0;
+            double precentage;
 
 
-            Console.WriteLine("Led Zeppelin Quiz");
+            Console.WriteLine("Rock Music Quiz");
 
             //Question 1
             Console.WriteLine("Who was the drummer for Led Zeppelin:");
@@ -140,98 +139,78 @@
             Console.ReadKey();
             Console.Clear();
 
+
+
             //Question 2
-            Console.WriteLine("Which album by Led Zeppelin featured the song Whole Lotta Love?:");
-            Console.WriteLine("a - Led Zeppelin II          b - Physical Graffiti");
-            Console.WriteLine("c - Houses of the Holy       d - Untitled (Led Zeppelin IV)");
-            Console.WriteLine();
-            Console.Write(": ");
+            Console.Write("Who is the lead guitarist in Guns N' Roses?: ");
             choice = Console.ReadLine().ToLower();
-            Console.WriteLine();
-            if (choice == "a")
+            if (choice.ToLower() == "slash")
             {
-                Console.WriteLine("Correct! Whole Lotta Love was on the album Led Zeppelin II");
+                Console.WriteLine("Correct Slash is the guitarist for Guns N' Roses");
                 score++;
-            }
-            else if (choice == "b")
-            {
-                Console.WriteLine("Incorrect! The album, Pysical Graffiti did not have Whole Lotta Love!");
-            }
-            else if (choice == "c")
-            {
-                Console.WriteLine("Incorrect! The album, Houses of the Holy did not have Whole Lotta Love!");
-
-            }
-            else if (choice == "d")
-            {
-                Console.WriteLine("Incorrect! The album Led Zeppelin IV did not have Whole Lotta Love!");
             }
             else
             {
-                Console.WriteLine("This is an invalid choice, try a,b,c,d,");
+                Console.WriteLine(choice + " is incorrect");
             }
 
-            Console.WriteLine("How many albums did Led Zeppelin release?:");
-            Console.WriteLine("a - 4          b - 18");
-            Console.WriteLine("c - 11       d - 8");
+
+
+            //Question 3
+            Console.WriteLine("How many albums did The Beatles release?:");
             Console.WriteLine();
             Console.Write(": ");
-            choice = Console.ReadLine().ToLower();
+            int.TryParse(Console.ReadLine(), out albums);
             Console.WriteLine();
-            if (choice == "a")
+            if (albums == 13)
             {
-                Console.WriteLine("Correct! Whole Lotta Love was on the album Led Zeppelin II");
+                Console.WriteLine("Correct! The Beatles released 13 albums");
                 score++;
             }
-            else if (choice == "b")
+            else if (albums == 1)
             {
-                Console.WriteLine("Incorrect! The album, Pysical Graffiti did not have Whole Lotta Love!");
-            }
-            else if (choice == "c")
-            {
-                Console.WriteLine("Incorrect! The album, Houses of the Holy did not have Whole Lotta Love!");
-
-            }
-            else if (choice == "d")
-            {
-                Console.WriteLine("Incorrect! The album Led Zeppelin IV did not have Whole Lotta Love!");
+                Console.WriteLine(albums + " album is incorrect!");
             }
             else
             {
-                Console.WriteLine("This is an invalid choice, try a,b,c,d,");
-            
+                Console.WriteLine(albums + " albums is incorrect!");
+            }
+            Console.WriteLine("Press ENTER to continue");
+            Console.ReadKey();
+            Console.Clear();
+
+
+
             //Question 4
-            Console.WriteLine("Which album by Led Zeppelin featured the song Whole Lotta Love?:");
-            Console.WriteLine("a - Led Zeppelin II          b - Physical Graffiti");
-            Console.WriteLine("c - Houses of the Holy       d - Untitled (Led Zeppelin IV)");
-            Console.WriteLine();
-            Console.Write(": ");
+            Console.WriteLine("TRUE OR FALSE");
+            Console.Write("Metallica has played a concert on all 7 continents of the world?: ");
             choice = Console.ReadLine().ToLower();
-            Console.WriteLine();
-            if (choice == "a")
+            if (choice.ToLower() == "true")
             {
-                Console.WriteLine("Correct! Whole Lotta Love was on the album Led Zeppelin II");
+                Console.WriteLine("Correct! It is true that Metallica played a concert on all 7 continents.");
                 score++;
             }
-            else if (choice == "b")
+            else if (choice ==  "false")
             {
-                Console.WriteLine("Incorrect! The album, Pysical Graffiti did not have Whole Lotta Love!");
-            }
-            else if (choice == "c")
-            {
-                Console.WriteLine("Incorrect! The album, Houses of the Holy did not have Whole Lotta Love!");
-
-            }
-            else if (choice == "d")
-            {
-                Console.WriteLine("Incorrect! The album Led Zeppelin IV did not have Whole Lotta Love!");
+                Console.WriteLine("False is incorrect.");
             }
             else
             {
-                Console.WriteLine("This is an invalid choice, try a,b,c,d,");
+                Console.WriteLine("This is a true or false question! " + choice + " is incorrect");
+            }
+            Console.WriteLine("Press ENTER to continue");
+            Console.ReadKey();
+            Console.Clear();
+
+
+
+            //Results
+            precentage = (score / 4 * 100);
+            if (score <= 2) ;
+            {
+                Console.WriteLine("You passed with a score of " + precentage + "% and got " + score + "/4.");
             }
 
         }
     }
-}
 }
