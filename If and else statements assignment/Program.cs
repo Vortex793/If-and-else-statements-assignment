@@ -10,11 +10,11 @@
             Console.WriteLine("3 - Quiz");
             int choice = Convert.ToInt32(Console.ReadLine());
 
+            Console.Clear();    //Clears the option menu
+
             if (choice == 1) Part1();
             else if (choice == 2) Part2();
             else if (choice == 3) Part3();
-            //else if (choice == 4) Part4();
-            //else if (choice == 5) Part5();
             else Console.WriteLine("Invalid number :(");
 
 
@@ -26,11 +26,16 @@
 
         static void Part1()
         {
+            //Space Boxing
             string choice;
             double earthWeight, result;
 
             Console.Write("What is your current weight on earth?: ");
-            earthWeight = Convert.ToDouble(Console.ReadLine());
+            if (!double.TryParse(Console.ReadLine(), out earthWeight))
+            {
+                Console.WriteLine("Your choice is invalid, enter a number.");
+                return;
+            }
 
             Console.WriteLine("We have information for the following planets");
             Console.WriteLine("1. Venus 2. Mars 3. Jupiter");
@@ -77,6 +82,8 @@
 
         static void Part2()
         {
+            //Simple Calculator
+
             int choice;
             double num1, num2, squareRoot;
             Console.WriteLine("Do you want to use a mulitipcation calculator or a square root calculator");
@@ -108,6 +115,8 @@
 
         static void Part3()
         {
+            //Quiz
+
             string choice;
             int albums, score = 0;
             double precentage;
@@ -184,6 +193,7 @@
             {
                 Console.WriteLine(albums + " albums is incorrect!");
             }
+            
             Console.WriteLine("Press ENTER to continue");
             Console.ReadKey();
             Console.Clear();
@@ -214,12 +224,15 @@
 
 
             //Results
-            precentage = (score / 4 * 100);
-            if (score <= 2) ;
+            precentage = (score / 4.0)* 100;
+            if (score >= 2) 
             {
                 Console.WriteLine("You passed with a score of " + precentage + "% and got " + score + "/4.");
             }
-
+            else
+            {
+                Console.WriteLine("You failed with a score of " + precentage + "% and got " + score + "/4.");
+            }
         }
     }
 }
