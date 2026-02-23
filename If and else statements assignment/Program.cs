@@ -21,6 +21,9 @@
 
             Console.ReadLine();
         }
+
+
+
         static void Part1()
         {
             string choice;
@@ -69,6 +72,9 @@
                 Console.WriteLine("You typed an invalid choice, pick between 1-6" + ".");
 
         }
+
+
+
         static void Part2()
         {
             int choice;
@@ -97,6 +103,9 @@
             }
 
         }
+
+
+
         static void Part3()
         {
             string choice;
