@@ -6,20 +6,29 @@ namespace If_and_else_statements_assignment
     {
         static void Main(string[] args)
         {
+            int choice;
+
             Console.WriteLine("Which part of the code would you like to run (choose between 1-5)");
             Console.WriteLine("1 - Space Boxing");
             Console.WriteLine("2 - Simple Calculator");
             Console.WriteLine("3 - Quiz");
-            int choice = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+            Console.Write(": ");
+
+            if (!int.TryParse(Console.ReadLine(), out choice))
+            {
+                Console.WriteLine("Your choice is invalid, next time pick a number between 1-3");
+            }
 
             Console.Clear();    //Clears the option menu
 
             if (choice == 1) Part1();
             else if (choice == 2) Part2();
             else if (choice == 3) Part3();
-            else Console.WriteLine("Invalid number :(");
-
-
+            else
+            {
+                Console.WriteLine("Invalid number :(");
+            }   
 
             Console.ReadLine();
         }
@@ -31,8 +40,9 @@ namespace If_and_else_statements_assignment
             //Space Boxing
             string choice;
             double earthWeight, result;
-
-            Console.Write("What is your current weight on earth?: ");
+            Console.WriteLine("Space Boxing");
+            Console.WriteLine();
+            Console.Write("What is your current weight on earth in pounds?: ");
             if (!double.TryParse(Console.ReadLine(), out earthWeight))
             {
                 Console.WriteLine("Your choice is invalid, enter a number next time!");
@@ -96,64 +106,79 @@ namespace If_and_else_statements_assignment
             int choice;
             string operation;
             double num1, num2, squareRoot;
-            Console.WriteLine("Do you want to use a mulitipcation calculator or a square root calculator");
-            Console.Write("1 for multiplaction or 2 for square root: ");
-            int.TryParse(Console.ReadLine(), out choice);
-            
+
+            Console.WriteLine("Simple Calculator");
+            Console.WriteLine();
+
+            //First number
             Console.Write("Enter your first number: ");
             
             if (!double.TryParse(Console.ReadLine(), out num1))
             {
-                Console.WriteLine(num1 + " is an invalid choice. Enter a number");
+                Console.WriteLine("Your choice is invalid, next time enter a number");
                 return;
             }
 
             // Ask for operation
-            Console.Write("Enter your operation (+, -, x, /, SR: ");
-            operation = Console.ReadLine();
+            Console.Write("Enter your operation (+, -, x, /, SR): ");
+            operation = Console.ReadLine().ToLower();
 
-            Console.Write("Enter your second number: ");
-            if (!double.TryParse(Console.ReadLine(), out num2))
+
+            //Square Root
+            if (operation.ToLower() == "sr")
             {
-                Console.WriteLine(num2 + " is an invalid choice. Enter a number");
+                Console.Clear();
+                squareRoot = Math.Sqrt(num1);
+                Console.WriteLine("The square root of " + num1 + " is " + squareRoot + ".");
+                Console.WriteLine();
+                Console.Write("Press ENTER to end the program: ");
+                
+                return;
+            }
+            if (operation != "+" && operation != "-" && operation != "x" && operation != "/")
+            {
+                Console.WriteLine(operation + " is invalid. Please try again next time.");
                 return;
             }
 
+
+            //Second number
+            Console.Write("Enter your second number: ");
+            
+            if (!double.TryParse(Console.ReadLine(), out num2))
+            {
+                Console.WriteLine("Your choice is invalid, next time enter a number.");
+                return;
+            }
+
+            Console.Clear();
             if (operation == "+") 
             {
                 Console.WriteLine(num1 + " + " + num2 + " = " + (num1 + num2));
             }   
+            
             else if (operation == "-")
             {
                 Console.WriteLine(num1 + " - " + num2 + " = " + (num1 - num2));
             }
+            
             else if (operation == "x")
             {
                 Console.WriteLine(num1 + " x " + num2 + " = " + (num1 * num2));
             }
+            
             else if (operation == "/")
             {
                 Console.WriteLine(num1 + " / " + num2 + " = " + (num1 / num2));
             }
-            else if (operation.ToLower() == "SR")
-            {
-                squareRoot = Math.Sqrt(num1);
-                Console.WriteLine("The square root of " + num1 + " is " + squareRoot + ".");
-            }
             
-            //else if (choice == 2)
-            //{
-            //    Console.WriteLine("Enter a number to determine the square root.");
-            //    num1 = Convert.ToDouble(Console.ReadLine());
-            //    if (!double.TryParse(Console.ReadLine(), out num1))
-            //    {
-            //        Console.WriteLine( num1 + " is an invalid choice. Enter a number");
-            //    }
-            //    squareRoot = Math.Sqrt(num1);
+            else
+            {
+                Console.WriteLine("You entered an invalid operation. Try again next time.");
 
-            //    Console.WriteLine("The square root of " + num1 + " is " + squareRoot + ".");
-            //}
-
+            }
+            Console.WriteLine();
+            Console.Write("Press ENTER to end the program: ");
         }
 
 
@@ -198,9 +223,9 @@ namespace If_and_else_statements_assignment
             }
             else
             {
-                Console.WriteLine("This is an invalid choice, try a,b,c,d,");
+                Console.WriteLine("This is an invalid choice, next time try a,b,c,d,");
             }
-            Console.WriteLine("Press ENTER to continue");
+            Console.Write("Press ENTER to continue: ");
             Console.ReadKey();
             Console.Clear();
 
@@ -209,9 +234,11 @@ namespace If_and_else_statements_assignment
             //Question 2
             Console.WriteLine("TEXT QUESTION");
             Console.Write("Who is the lead guitarist in Guns N' Roses?: ");
-
+            
             choice = Console.ReadLine().ToLower();
-            if (choice.ToLower() == "slash")
+            Console.WriteLine();
+
+            if (choice.ToLower() == "slash")    //Answer is Slash
             {
                 Console.WriteLine();
                 Console.WriteLine("Correct, Slash is the guitarist for Guns N' Roses");
@@ -245,7 +272,7 @@ namespace If_and_else_statements_assignment
                 Console.WriteLine("Your choice is incorrect or invalid!");
             }
             
-            Console.WriteLine("Press ENTER to continue");
+            Console.Write("Press ENTER to continue: ");
             Console.ReadKey();
             Console.Clear();
 
@@ -255,9 +282,11 @@ namespace If_and_else_statements_assignment
             Console.WriteLine("TRUE OR FALSE");
             Console.Write("Metallica has played a concert on all 7 continents of the world?: ");
             choice = Console.ReadLine().ToLower();
+            Console.WriteLine();
             if (choice.ToLower() == "true")    //Answer is true
             {
-                Console.WriteLine("Correct! It is true that Metallica played a concert on all 7 continents.");
+                
+                Console.WriteLine("Correct! It is true that Metallica has played a concert on all 7 continents (even antarctica).");
                 score++;
             }
             else if (choice ==  "false")
@@ -268,7 +297,7 @@ namespace If_and_else_statements_assignment
             {
                 Console.WriteLine("This is a true or false question! " + choice + " is incorrect");
             }
-            Console.WriteLine("Press ENTER to continue");
+            Console.Write("Press ENTER to continue: ");
             Console.ReadKey();
             Console.Clear();
 
@@ -284,6 +313,8 @@ namespace If_and_else_statements_assignment
             {
                 Console.WriteLine("You failed with a score of " + precentage + "% and got " + score + "/4.");
             }
-        }
+            Console.WriteLine();
+            Console.Write("Press ENTER to end the program: ");
+        }       
     }
 }
