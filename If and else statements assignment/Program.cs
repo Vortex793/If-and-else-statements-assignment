@@ -6,6 +6,8 @@ namespace If_and_else_statements_assignment
     {
         static void Main(string[] args)
         {
+            //Curtis Apfelbeck
+
             int choice;
 
             Console.WriteLine("Which part of the code would you like to run (choose between 1-5)");
